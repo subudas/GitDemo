@@ -15,7 +15,7 @@ data = [
         "Nationality": "Singaporean", 
         "Sex": "F",
         "SyncID": 1,
-        "ShoeSize": " ",
+        "ShoeSize": "42",
         "AgencyData": {
             "City": "Mumbai",
             "Name": "Eastaway (India) Private Limited"
