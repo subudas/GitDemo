@@ -1,0 +1,37 @@
+from docx import Document
+from openpyxl import Workbook
+
+# Load the Word document
+doc = Document(r"C:\Users\subramaniyam.das\Downloads\Application Form Eastaway 20204 3.docx")
+
+# Find all tables in the document
+tables = doc.tables
+
+# Access the 3rd table (index 2, because Python uses 0-based indexing)
+if len(tables) >= 3:  # Check if there are at least 3 tables
+    third_table = tables[2]  # Index 2 refers to the 3rd table
+    table_data = []
+
+    # Extract rows and cells from the third table
+    for row in third_table.rows:
+        row_data = [cell.text.strip() for cell in row.cells]
+        table_data.append(row_data)
+
+    # Now, let's create a new Excel file and write the extracted data into it
+
+    # Create a new workbook and get the active sheet
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = "Extracted Data"  # Set sheet title (optional)
+
+    # Write the extracted data into the Excel sheet
+    for row_idx, row_data in enumerate(table_data, start=1):
+        for col_idx, cell_data in enumerate(row_data, start=1):
+            sheet.cell(row=row_idx, column=col_idx, value=cell_data)
+
+    # Save the new Excel file
+    workbook.save(r'C:\Users\subramaniyam.das\new_excel_file.xlsx')  # Replace with the desired file path
+
+    print("Table data has been successfully written to the new Excel file.")
+else:
+    print("The document doesn't contain 3 tables.")
