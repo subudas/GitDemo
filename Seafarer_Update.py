@@ -3,7 +3,7 @@ import json
 from requests.auth import HTTPBasicAuth
 
 # Define the URL
-url = 'https://xpressfeeders.cloudfleetmanager.com/papi/Crewing/Seafarers'
+url = 'https://xpressfeeders.cloudfleetmanager.com/papi/Crewing/Seafarers' #url
 
 # Create the data (same JSON body as you provided)
 data = [
